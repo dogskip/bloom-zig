@@ -1,0 +1,8 @@
+zig-cache/
+zig-out/
+.zig-cache/
+*.exe
+*.dll
+*.so
+*.dylib
+.DS_Store
