@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        zig-version: ["0.16.0"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zig 설치
+        uses: goto-bus-stop/setup-zig@v2
+        with:
+          version: ${{ matrix.zig-version }}
+      - name: 빌드 확인
+        run: zig build
+      - name: 테스트 실행
+        run: zig build test
